@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RR Resort & Spa | Luxury Mountain Escape</title>
+    <meta name="description" content="Experience unparalleled luxury at RR Resort & Spa. Discover our private mountain villas, premium geothermal hot springs, fine dining experiences, and personalized AI concierge.">
+    <!-- Google Fonts: Cormorant Garamond for serif titles, Jost for sans-serif body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <!-- Sticky Navigation Bar -->
+    <header class="navbar" id="main-header">
+        <div class="nav-container">
+            <a href="#" class="brand-logo" id="logo-link">
+                <span class="logo-serif">RR</span>
+                <span class="logo-subtitle">RESORT & SPA</span>
+            </a>
+            
+            <nav class="nav-menu" id="navigation-menu">
+                <a href="#villas" class="nav-link" id="link-villas">Villas</a>
+                <a href="#experiences" class="nav-link" id="link-experiences">Experiences</a>
+                <a href="#wellness" class="nav-link" id="link-wellness">Wellness</a>
+                <a href="#ai-planner" class="nav-link" id="link-ai-planner"><i class="fa-solid fa-wand-magic-sparkles text-gold"></i> AI Concierge</a>
+            </nav>
+            
+            <div class="nav-actions">
+                <button class="btn btn-primary" id="btn-reserve-nav">Reserve Your Stay</button>
+                <button class="nav-toggle" id="btn-mobile-toggle" aria-label="Toggle Menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero & AI Trip Planner Section -->
+        <section class="hero-section" id="home">
+            <div class="hero-bg-overlay"></div>
+            <div class="hero-container">
+                
+                <!-- Left Column: Marketing & Live Availability -->
+                <div class="hero-content">
+                    <span class="hero-tag" id="tag-welcome"><i class="fa-solid fa-sparkles"></i> Welcome to Absolute Luxury</span>
+                    <h1 class="hero-title" id="main-hero-title">Stay Close to Nature, <br><span class="text-gold serif-italic">Far from Everything Else.</span></h1>
+                    <p class="hero-description" id="hero-desc-text">
+                        High-altitude privacy meets world-class hospitality. Nestled in a secluded mountain valley, RR Resort & Spa offers an oasis of silence, gourmet culinary art, and geothermal recovery.
+                    </p>
+                    
+                    <!-- Live Stats Dashboard -->
+                    <div class="live-dashboard glass-panel" id="stats-dashboard">
+                        <h3 class="dashboard-title"><span class="pulse-dot"></span> Live Resort Status</h3>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <i class="fa-solid fa-hotel stat-icon"></i>
+                                <div class="stat-details">
+                                    <span class="stat-val">12 Villas</span>
+                                    <span class="stat-lbl">Live Availability</span>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fa-solid fa-temperature-half stat-icon"></i>
+                                <div class="stat-details">
+                                    <span class="stat-val">22°C / Perfect</span>
+                                    <span class="stat-lbl">Alpine Weather</span>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fa-solid fa-utensils stat-icon"></i>
+                                <div class="stat-details">
+                                    <span class="stat-val">Open</span>
+                                    <span class="stat-lbl">Fine Dining Reservations</span>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fa-solid fa-spa stat-icon"></i>
+                                <div class="stat-details">
+                                    <span class="stat-val">Available</span>
+                                    <span class="stat-lbl">Spa Appointments</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Interactive AI Planner -->
+                <div class="hero-planner" id="ai-planner">
+                    <div class="planner-card glass-panel" id="ai-chat-panel">
+                        <div class="planner-header">
+                            <div class="bot-info">
+                                <div class="bot-avatar"><i class="fa-solid fa-robot"></i></div>
+                                <div>
+                                    <h4 class="bot-name">RR AI Concierge</h4>
+                                    <span class="bot-status"><span class="pulse-dot green"></span> Online & Ready</span>
+                                </div>
+                            </div>
+                            <button class="bot-reset" id="btn-chat-reset" title="Clear Chat"><i class="fa-solid fa-rotate-left"></i></button>
+                        </div>
+                        
+                        <!-- Chat Message Window -->
+                        <div class="planner-chat-body" id="chat-messages-container">
+                            <div class="chat-message bot-msg">
+                                <p>Welcome to RR Resort! I am your AI Concierge. Where would you like to escape? Let me tailor your perfect stay, schedule dining, or suggest spa treatments.</p>
+                            </div>
+                        </div>
+
+                        <!-- Suggested Prompts / Tags -->
+                        <div class="planner-suggestions" id="chat-suggestions-box">
+                            <span class="suggestion-tag" data-prompt="Find a romantic villa for two with scenic forest views.">
+                                <i class="fa-solid fa-heart"></i> Romantic Stay
+                            </span>
+                            <span class="suggestion-tag" data-prompt="Show me available spa packages and hot springs booking.">
+                                <i class="fa-solid fa-spa"></i> Spa & Hot Springs
+                            </span>
+                            <span class="suggestion-tag" data-prompt="What special gourmet menu does Chef Nedumaran suggest tonight?">
+                                <i class="fa-solid fa-utensils"></i> Chef's Special Menu
+                            </span>
+                            <span class="suggestion-tag" data-prompt="Are there family-friendly mountain villas with private pools?">
+                                <i class="fa-solid fa-mountain"></i> Family Villas
+                            </span>
+                        </div>
+
+                        <!-- Chat Input Bar -->
+                        <form class="planner-input-form" id="chat-input-form">
+                            <input type="text" id="chat-input-field" class="planner-input" placeholder="Ask AI Trip Planner..." autocomplete="off">
+                            <button type="submit" class="btn btn-icon btn-gold" id="btn-chat-submit" aria-label="Send message">
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Brand Benefits & Trust Stats Bar -->
+        <section class="benefits-bar" id="benefits-bar">
+            <div class="container">
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <i class="fa-solid fa-sliders benefit-icon"></i>
+                        <h5>Tailored Recommendations</h5>
+                        <p>Fully customized experiences matching your lifestyle.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fa-solid fa-calendar-days benefit-icon"></i>
+                        <h5>Flexible Booking Rates</h5>
+                        <p>Easy cancellation and instant re-scheduling support.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fa-solid fa-compass benefit-icon"></i>
+                        <h5>Local Insider Guides</h5>
+                        <p>Hidden mountain trails, private summits, and wild excursions.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fa-solid fa-car-side benefit-icon"></i>
+                        <h5>Airport Pickup Included</h5>
+                        <p>Complimentary luxury Tesla transit directly to the resort.</p>
+                    </div>
+                </div>
+                
+                <div class="trust-divider"></div>
+                
+                <div class="brands-row">
+                    <span class="brand-text">Trusted by 20,000+ Guests & Hospitality Leaders:</span>
+                    <div class="brand-logos">
+                        <span class="brand-logo-mock"><i class="fa-solid fa-crown"></i> Relais & Châteaux</span>
+                        <span class="brand-logo-mock"><i class="fa-solid fa-gem"></i> Small Luxury Hotels</span>
+                        <span class="brand-logo-mock"><i class="fa-solid fa-award"></i> Michelin Guide</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Signature Stays Section -->
+        <section class="villas-section" id="villas">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Signature Accommodations</span>
+                    <h2 class="section-title">Luxury Mountain Villas</h2>
+                    <p class="section-desc">Each villa is designed in harmony with the environment, featuring locally sourced timber, panoramic glass walls, private fireplaces, and warm outdoor pools.</p>
+                </div>
+                
+                <!-- Dynamic Villa Table / Comparison -->
+                <div class="villas-comparison-wrapper glass-panel">
+                    <table class="villas-table" id="villas-compare-table">
+                        <thead>
+                            <tr>
+                                <th>Villa Type</th>
+                                <th>Best Season</th>
+                                <th>Capacity</th>
+                                <th>Highlights</th>
+                                <th>Starting Price</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="villa-row" id="row-mountain-view">
+                                <td class="villa-name"><strong>HillView Luxury Villa</strong></td>
+                                <td>Year-Round</td>
+                                <td>Up to 4 Guests</td>
+                                <td>Panoramic deck, private heated infinity pool, private sauna</td>
+                                <td class="price-val">$750 <span class="price-unit">/ night</span></td>
+                                <td>
+                                    <button class="btn btn-outline btn-sm btn-view-details" data-villa="hillview">View Details</button>
+                                    <button class="btn btn-primary btn-sm btn-book-now" data-villa="hillview">Book Now</button>
+                                </td>
+                            </tr>
+                            <tr class="villa-row" id="row-forest-stream">
+                                <td class="villa-name"><strong>Forest Stream Lodge</strong></td>
+                                <td>Sep - May</td>
+                                <td>Up to 2 Guests</td>
+                                <td>Creekside fireplace, outdoor copper tub, private glass dome</td>
+                                <td class="price-val">$620 <span class="price-unit">/ night</span></td>
+                                <td>
+                                    <button class="btn btn-outline btn-sm btn-view-details" data-villa="forest">View Details</button>
+                                    <button class="btn btn-primary btn-sm btn-book-now" data-villa="forest">Book Now</button>
+                                </td>
+                            </tr>
+                            <tr class="villa-row" id="row-chefs-pavilion">
+                                <td class="villa-name"><strong>Chef's Pavilion Suite</strong></td>
+                                <td>Oct - Apr</td>
+                                <td>Up to 6 Guests</td>
+                                <td>Professional kitchen, chef room-service portal, hot tub</td>
+                                <td class="price-val">$980 <span class="price-unit">/ night</span></td>
+                                <td>
+                                    <button class="btn btn-outline btn-sm btn-view-details" data-villa="chef">View Details</button>
+                                    <button class="btn btn-primary btn-sm btn-book-now" data-villa="chef">Book Now</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Expanded Villa Info Card Drawer (Triggered by View Details) -->
+                <div class="villa-details-drawer hidden" id="villa-details-overlay">
+                    <div class="drawer-content glass-panel" id="drawer-inner-card">
+                        <button class="btn-close" id="btn-close-drawer" aria-label="Close Details"><i class="fa-solid fa-xmark"></i></button>
+                        <div class="drawer-layout">
+                            <div class="drawer-media">
+                                <img src="assets/suite.jpg" alt="Luxury Suite Interior" id="drawer-img" class="responsive-img">
+                            </div>
+                            <div class="drawer-text">
+                                <h3 class="drawer-title" id="drawer-villa-title">HillView Luxury Villa</h3>
+                                <p class="drawer-desc" id="drawer-villa-desc">Wake up above the clouds. This premium villa spans over 2,200 sq ft, offering panoramic mountain views, an expansive redwood deck, private outdoor hot spring bath, glass fireplace, and direct access to hiking trails.</p>
+                                <div class="drawer-features">
+                                    <h4>Included Amenities:</h4>
+                                    <ul class="features-list" id="drawer-amenities">
+                                        <li><i class="fa-solid fa-check text-gold"></i> Heated Geothermal Infinity Pool</li>
+                                        <li><i class="fa-solid fa-check text-gold"></i> Fully stocked organic local minibar</li>
+                                        <li><i class="fa-solid fa-check text-gold"></i> Apple iPad-controlled lighting and sound</li>
+                                        <li><i class="fa-solid fa-check text-gold"></i> Personalized concierge service</li>
+                                    </ul>
+                                </div>
+                                <div class="drawer-action-row">
+                                    <span class="drawer-price" id="drawer-villa-price">$750 / night</span>
+                                    <button class="btn btn-primary" id="btn-book-from-drawer">Reserve This Villa</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resort Experiences Grid -->
+        <section class="experiences-section" id="experiences">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Curated Activities</span>
+                    <h2 class="section-title">The RR Resort Experience</h2>
+                    <p class="section-desc">We combine raw wilderness with luxury services to design memory-making excursions. Wellness, gastronomy, and exploration form the heart of our retreat.</p>
+                </div>
+                
+                <div class="experiences-grid">
+                    <!-- Culinary Card -->
+                    <div class="experience-card" id="card-culinary">
+                        <div class="card-media">
+                            <img src="assets/dining.jpg" alt="Fine Culinary Dish" class="experience-img">
+                            <div class="card-tag">Gastronomy</div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Chef Nedumaran's Kitchen</h3>
+                            <p class="card-text">Indulge in a 7-course seasonal tasting menu highlighting wild-foraged mushrooms, organic vegetables from our garden, and local meats. Chef Nedumaran personally cooks for our guests, bringing exceptional culinary storytelling to your table.</p>
+                            <a href="#ai-planner" class="card-link" id="link-culinary-chat">Book Chef's Table <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Wellness Card -->
+                    <div class="experience-card" id="card-wellness">
+                        <div class="card-media">
+                            <img src="assets/spa.jpg" alt="Steaming Geothermal Pool" class="experience-img">
+                            <div class="card-tag">Wellness</div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Geothermal Thermal Springs</h3>
+                            <p class="card-text">Heal your body and soul in our natural volcanic hot springs. Carved out of mountain basalt rocks, the mineral-rich waters sit at a constant 39°C, offering therapeutic relaxation under a snowy or starry sky. Therapeutic massages are available daily.</p>
+                            <a href="#ai-planner" class="card-link" id="link-spa-chat">Inquire About Spa <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Excursions Card -->
+                    <div class="experience-card" id="card-adventure">
+                        <div class="card-media">
+                            <img src="assets/hero.jpg" alt="Outdoor Mountain Excursion" class="experience-img">
+                            <div class="card-tag">Adventure</div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Guided Summit Explorations</h3>
+                            <p class="card-text">Our certified mountaineers lead private treks to scenic overlooks, high alpine lakes, and panoramic peaks. In winter, enjoy private backcountry ski routing directly from the villa steps, complete with custom lunch packets and thermal flasks.</p>
+                            <a href="#ai-planner" class="card-link" id="link-adventure-chat">Plan Excursions <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Carousel Section -->
+        <section class="testimonials-section" id="stories">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-tag">Guest Diaries</span>
+                    <h2 class="section-title">What Our Guests Say</h2>
+                </div>
+                
+                <div class="testimonial-slider-container glass-panel" id="testimonials-box">
+                    <div class="testimonial-slides">
+                        
+                        <div class="testimonial-slide active" id="slide-1">
+                            <div class="slide-rating">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="slide-quote">
+                                "What started as a weekend getaway became our favorite annual tradition. Every detail—from the private villa to the customized hiking itinerary compiled by the AI Concierge—felt effortless, highly luxurious, and unforgettable."
+                            </p>
+                            <div class="slide-author">
+                                <h5 class="author-name">Elizabeth & James Vance</h5>
+                                <span class="author-label">Stayed in HillView Villa | Sep 2025</span>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-slide" id="slide-2">
+                            <div class="slide-rating">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="slide-quote">
+                                "The culinary experience alone makes RR Resort worth visiting. Chef Nedumaran's masterclass was both hilariously entertaining and incredibly educational. The geothermal springs at night are absolutely magical!"
+                            </p>
+                            <div class="slide-author">
+                                <h5 class="author-name">Dr. Rajesh Kumar</h5>
+                                <span class="author-label">Stayed in Chef's Pavilion | Jan 2026</span>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-slide" id="slide-3">
+                            <div class="slide-rating">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="slide-quote">
+                                "Pure serenity. The Forest Stream Lodge felt like being completely alone in nature, but with the luxury of Michelin-grade room service and warm copper baths. The private glass dome is fantastic for stargazing."
+                            </p>
+                            <div class="slide-author">
+                                <h5 class="author-name">Sophia Martinez</h5>
+                                <span class="author-label">Stayed in Forest Stream Lodge | March 2026</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    <!-- Controls -->
+                    <div class="slider-controls">
+                        <button class="btn-slider-prev" id="btn-slide-prev" aria-label="Previous Slide"><i class="fa-solid fa-chevron-left"></i></button>
+                        <div class="slider-dots" id="slide-dots-indicator">
+                            <span class="dot active" data-slide="0"></span>
+                            <span class="dot" data-slide="1"></span>
+                            <span class="dot" data-slide="2"></span>
+                        </div>
+                        <button class="btn-slider-next" id="btn-slide-next" aria-label="Next Slide"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter & Stay CTA -->
+        <section class="cta-section" id="cta">
+            <div class="container text-center">
+                <h2 class="cta-title">Ready for Your Next Escape?</h2>
+                <p class="cta-desc">Create unforgettable memories with handpicked luxury stays, personalized wellness itineraries, and seamless booking tailored around your unique travel journey.</p>
+                <div class="cta-actions">
+                    <button class="btn btn-primary btn-lg" id="btn-cta-reserve">Plan My Stay</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                
+                <!-- Footer Brand -->
+                <div class="footer-col footer-brand">
+                    <a href="#" class="brand-logo">
+                        <span class="logo-serif">RR</span>
+                        <span class="logo-subtitle">RESORT & SPA</span>
+                    </a>
+                    <p class="footer-brand-desc">Luxury mountain retreats crafted for travelers seeking peace, fine gastronomy, geothermal health, and unforgettable life experiences.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+
+                <!-- Footer Links 1 -->
+                <div class="footer-col">
+                    <h5 class="footer-col-title">Explore</h5>
+                    <ul class="footer-links">
+                        <li><a href="#villas">Destinations & Villas</a></li>
+                        <li><a href="#experiences">Chef Nedumaran's Kitchen</a></li>
+                        <li><a href="#experiences">Wellness & Hot Springs</a></li>
+                        <li><a href="#stories">Guest Stories</a></li>
+                    </ul>
+                </div>
+
+                <!-- Footer Links 2 -->
+                <div class="footer-col">
+                    <h5 class="footer-col-title">Support</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Booking Policy</a></li>
+                        <li><a href="#">Cancellation Terms</a></li>
+                        <li><a href="#">Contact Concierge</a></li>
+                    </ul>
+                </div>
+
+                <!-- Footer Links 3 -->
+                <div class="footer-col">
+                    <h5 class="footer-col-title">Company</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Partners</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 RR Resort & Spa. All rights reserved. Designed with digital elegance.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Booking Modal (Widget) -->
+    <div class="booking-modal-overlay hidden" id="booking-modal">
+        <div class="booking-modal glass-panel" id="booking-modal-card">
+            <button class="btn-close" id="btn-close-booking" aria-label="Close Booking"><i class="fa-solid fa-xmark"></i></button>
+            <h3 class="modal-title"><i class="fa-solid fa-calendar-check text-gold"></i> Reserve Your Stay</h3>
+            <p class="modal-subtitle">Secure live rates at RR Resort. Fill out the reservation details below.</p>
+            
+            <form id="booking-reservation-form" class="modal-form">
+                
+                <div class="form-group">
+                    <label for="select-villa">Select Accommodations</label>
+                    <select id="select-villa" class="form-input" required>
+                        <option value="hillview" selected>HillView Luxury Villa ($750/night)</option>
+                        <option value="forest">Forest Stream Lodge ($620/night)</option>
+                        <option value="chef">Chef's Pavilion Suite ($980/night)</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="input-check-in">Check In Date</label>
+                        <input type="date" id="input-check-in" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="input-check-out">Check Out Date</label>
+                        <input type="date" id="input-check-out" class="form-input" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="select-guests">Guests</label>
+                        <select id="select-guests" class="form-input">
+                            <option value="1">1 Guest</option>
+                            <option value="2" selected>2 Guests</option>
+                            <option value="3">3 Guests</option>
+                            <option value="4">4 Guests</option>
+                            <option value="5">5 Guests</option>
+                            <option value="6">6 Guests</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="select-transfer">Tesla Airport Transfer</label>
+                        <select id="select-transfer" class="form-input">
+                            <option value="yes" selected>Yes, Complimentary Pickup</option>
+                            <option value="no">No, Self Driving</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Price Summary Dashboard -->
+                <div class="price-summary-box" id="price-summary-panel">
+                    <div class="summary-row">
+                        <span>Nightly Rate:</span>
+                        <span id="summary-rate">$750</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Total Nights:</span>
+                        <span id="summary-nights">0 nights</span>
+                    </div>
+                    <div class="summary-row divider"></div>
+                    <div class="summary-row total">
+                        <span>Estimated Total:</span>
+                        <span id="summary-total">$0</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block btn-lg" id="btn-submit-booking">Confirm Booking Details</button>
+            </form>
+            
+            <!-- Success Overlay (Inside Modal) -->
+            <div class="booking-success-box hidden" id="booking-success-message">
+                <div class="success-icon"><i class="fa-solid fa-circle-check"></i></div>
+                <h4 class="success-title">Reservation Requested!</h4>
+                <p class="success-text">Your booking request has been submitted to the RR Resort team. A confirmation receipt has been sent to your digital account along with your Tesla pickup schedule.</p>
+                <button type="button" class="btn btn-outline" id="btn-close-success">Done</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script inclusion -->
+    <script src="index.js"></script>
+</body>
+</html>
