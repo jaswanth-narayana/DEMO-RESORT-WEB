@@ -56,112 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     /* =========================================================================
-       2. AI CONCIERGE INTERACTIVE CHAT ENGINE
-       ========================================================================= */
-    const chatForm = document.getElementById("chat-input-form");
-    const chatInput = document.getElementById("chat-input-field");
-    const chatMessages = document.getElementById("chat-messages-container");
-    const chatReset = document.getElementById("btn-chat-reset");
-    const suggestionTags = document.querySelectorAll(".suggestion-tag");
-
-    // Chatbot responses database
-    const botReplies = {
-        romantic: "For a romantic getaway, I highly recommend our **Forest Stream Lodge**. It features a creekside fireplace, a private outdoor copper tub, and a glass stargazing dome. It starts at $620/night. Would you like to check availability?",
-        spa: "The wellness spa features natural geothermal pools carved from basalt rocks, heated to a therapeutic 39°C. Massages, detox scrubs, and private pool reservations can be arranged. Spa access is complimentary for all villa bookings.",
-        chef: "Chef Nedumaran is hosting an exclusive 7-course seasonal culinary table tonight, spotlighting wild-foraged truffles and organic local cuts. I can reserve a slot for you at 7:30 PM. Shall I book your dining seats?",
-        family: "Our **HillView Luxury Villa** ($750/night) and **Chef's Pavilion Suite** ($980/night) are perfect for families. They include spacious decks, heated infinity pools, multi-bedroom layouts, and dedicated concierge support.",
-        default: "That sounds like a wonderful plan! I can coordinate your accommodations, dietary bookings, and airport pickup. Would you like to reserve a stay or speak to our host team directly?"
-    };
-
-    function appendMessage(text, isUser = false) {
-        const msgDiv = document.createElement("div");
-        msgDiv.className = `chat-message ${isUser ? 'user-msg' : 'bot-msg'}`;
-        
-        // Basic Markdown-to-HTML parser for highlights
-        let formattedText = text
-            .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-            .replace(/\*([^*]+)\*/g, '<em>$1</em>');
-            
-        msgDiv.innerHTML = `<p>${formattedText}</p>`;
-        chatMessages.appendChild(msgDiv);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    function showTypingIndicator() {
-        const loaderDiv = document.createElement("div");
-        loaderDiv.className = "chat-message bot-msg chat-bubble-loader-wrapper";
-        loaderDiv.innerHTML = `
-            <div class="chat-bubble-loader">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        `;
-        loaderDiv.id = "temp-typing-indicator";
-        chatMessages.appendChild(loaderDiv);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    function removeTypingIndicator() {
-        const indicator = document.getElementById("temp-typing-indicator");
-        if (indicator) indicator.remove();
-    }
-
-    function processAiResponse(userText) {
-        showTypingIndicator();
-        
-        // Simulating artificial thinking delays
-        setTimeout(() => {
-            removeTypingIndicator();
-            const text = userText.toLowerCase();
-            let reply = botReplies.default;
-
-            if (text.includes("romantic") || text.includes("two") || text.includes("couple")) {
-                reply = botReplies.romantic;
-            } else if (text.includes("spa") || text.includes("hot spring") || text.includes("wellness") || text.includes("massage")) {
-                reply = botReplies.spa;
-            } else if (text.includes("chef") || text.includes("food") || text.includes("dining") || text.includes("nedumaran") || text.includes("menu")) {
-                reply = botReplies.chef;
-            } else if (text.includes("family") || text.includes("children") || text.includes("villas") || text.includes("pool")) {
-                reply = botReplies.family;
-            }
-
-            appendMessage(reply);
-        }, 1000);
-    }
-
-    if (chatForm) {
-        chatForm.addEventListener("submit", (e) => {
-            e.preventDefault();
-            const val = chatInput.value.trim();
-            if (!val) return;
-
-            appendMessage(val, true);
-            chatInput.value = "";
-            processAiResponse(val);
-        });
-    }
-
-    if (chatReset) {
-        chatReset.addEventListener("click", () => {
-            chatMessages.innerHTML = `
-                <div class="chat-message bot-msg">
-                    <p>Welcome to RR Resort! I am your Concierge chatbot. Where would you like to escape? Let me help tailor your perfect stay, schedule dining, or suggest spa treatments.</p>
-                </div>
-            `;
-        });
-    }
-
-    suggestionTags.forEach(tag => {
-        tag.addEventListener("click", () => {
-            const prompt = tag.getAttribute("data-prompt");
-            if (!prompt) return;
-            appendMessage(prompt, true);
-            processAiResponse(prompt);
-        });
-    });
-
-    /* =========================================================================
        3. SIGNATURE VILLAS DATA & DETAILS DRAWER (TOGGLE)
        ========================================================================= */
     const villaData = {
@@ -388,28 +282,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Scroll to AI Concierge triggers from Experiences links
-    const experienceChatLinks = [
-        { id: "link-culinary-chat", prompt: "I would like to book a table at Chef Nedumaran's Kitchen. What is tonight's special?" },
-        { id: "link-spa-chat", prompt: "Tell me more about the geothermal springs spa packages." },
-        { id: "link-adventure-chat", prompt: "What outdoor summit adventures or ski options do you suggest?" }
-    ];
 
-    experienceChatLinks.forEach(item => {
-        const el = document.getElementById(item.id);
-        if (el) {
-            el.addEventListener("click", (e) => {
-                e.preventDefault();
-                chatInput.value = item.prompt;
-                document.getElementById("ai-planner").scrollIntoView({ behavior: "smooth" });
-                setTimeout(() => {
-                    appendMessage(item.prompt, true);
-                    chatInput.value = "";
-                    processAiResponse(item.prompt);
-                }, 800);
-            });
-        }
-    });
 
     /* =========================================================================
        5. TESTIMONIAL SLIDER CAROUSEL

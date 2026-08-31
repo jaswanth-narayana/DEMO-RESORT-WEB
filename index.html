@@ -91,52 +91,6 @@
                     </div>
                 </div>
 
-                <!-- Right Column: Interactive Concierge Chat -->
-                <div class="hero-planner" id="ai-planner">
-                    <div class="planner-card glass-panel" id="ai-chat-panel">
-                        <div class="planner-header">
-                            <div class="bot-info">
-                                <div class="bot-avatar"><i class="fa-solid fa-user-tie"></i></div>
-                                <div>
-                                    <h4 class="bot-name">RR Concierge</h4>
-                                    <span class="bot-status"><span class="pulse-dot green"></span> Online & Ready</span>
-                                </div>
-                            </div>
-                            <button class="bot-reset" id="btn-chat-reset" title="Clear Chat"><i class="fa-solid fa-rotate-left"></i></button>
-                        </div>
-                        
-                        <!-- Chat Message Window -->
-                        <div class="planner-chat-body" id="chat-messages-container">
-                            <div class="chat-message bot-msg">
-                                <p>Welcome to RR Resort! I am your Concierge chatbot. Where would you like to escape? Let me help tailor your perfect stay, schedule dining, or suggest spa treatments.</p>
-                            </div>
-                        </div>
-
-                        <!-- Suggested Prompts / Tags -->
-                        <div class="planner-suggestions" id="chat-suggestions-box">
-                            <span class="suggestion-tag" data-prompt="Find a romantic villa for two with scenic forest views.">
-                                <i class="fa-solid fa-heart"></i> Romantic Stay
-                            </span>
-                            <span class="suggestion-tag" data-prompt="Show me available spa packages and hot springs booking.">
-                                <i class="fa-solid fa-spa"></i> Spa & Hot Springs
-                            </span>
-                            <span class="suggestion-tag" data-prompt="What special gourmet menu does Chef Nedumaran suggest tonight?">
-                                <i class="fa-solid fa-utensils"></i> Chef's Special Menu
-                            </span>
-                            <span class="suggestion-tag" data-prompt="Are there family-friendly mountain villas with private pools?">
-                                <i class="fa-solid fa-mountain"></i> Family Villas
-                            </span>
-                        </div>
-
-                        <!-- Chat Input Bar -->
-                        <form class="planner-input-form" id="chat-input-form">
-                            <input type="text" id="chat-input-field" class="planner-input" placeholder="Ask Concierge Chatbot..." autocomplete="off">
-                            <button type="submit" class="btn btn-icon btn-gold" id="btn-chat-submit" aria-label="Send message">
-                                <i class="fa-solid fa-paper-plane"></i>
-                            </button>
-                        </form>
-                    </div>
-                </div>
 
             </div>
         </section>
@@ -290,7 +244,7 @@
                         <div class="card-content">
                             <h3 class="card-title">Chef Nedumaran's Kitchen</h3>
                             <p class="card-text">Indulge in a 7-course seasonal tasting menu highlighting wild-foraged mushrooms, organic vegetables from our garden, and local meats. Chef Nedumaran personally cooks for our guests, bringing exceptional culinary storytelling to your table.</p>
-                            <a href="#ai-planner" class="card-link" id="link-culinary-chat">Book Chef's Table <i class="fa-solid fa-arrow-right"></i></a>
+                            <a href="#" class="card-link btn-book-now" data-villa="chef">Book Chef's Table <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </div>
 
@@ -303,7 +257,7 @@
                         <div class="card-content">
                             <h3 class="card-title">Geothermal Thermal Springs</h3>
                             <p class="card-text">Heal your body and soul in our natural volcanic hot springs. Carved out of mountain basalt rocks, the mineral-rich waters sit at a constant 39°C, offering therapeutic relaxation under a snowy or starry sky. Therapeutic massages are available daily.</p>
-                            <a href="#ai-planner" class="card-link" id="link-spa-chat">Inquire About Spa <i class="fa-solid fa-arrow-right"></i></a>
+                            <a href="#" class="card-link btn-book-now" data-villa="forest">Inquire About Spa <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </div>
 
@@ -316,7 +270,7 @@
                         <div class="card-content">
                             <h3 class="card-title">Guided Summit Explorations</h3>
                             <p class="card-text">Our certified mountaineers lead private treks to scenic overlooks, high alpine lakes, and panoramic peaks. In winter, enjoy private backcountry ski routing directly from the villa steps, complete with custom lunch packets and thermal flasks.</p>
-                            <a href="#ai-planner" class="card-link" id="link-adventure-chat">Plan Excursions <i class="fa-solid fa-arrow-right"></i></a>
+                            <a href="#" class="card-link btn-book-now" data-villa="hillview">Plan Excursions <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
