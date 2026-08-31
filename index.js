@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
         chatReset.addEventListener("click", () => {
             chatMessages.innerHTML = `
                 <div class="chat-message bot-msg">
-                    <p>Welcome to RR Resort! I am your AI Concierge. Where would you like to escape? Let me tailor your perfect stay, schedule dining, or suggest spa treatments.</p>
+                    <p>Welcome to RR Resort! I am your Concierge chatbot. Where would you like to escape? Let me help tailor your perfect stay, schedule dining, or suggest spa treatments.</p>
                 </div>
             `;
         });
